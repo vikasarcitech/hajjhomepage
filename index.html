@@ -3,14 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hajj App: Your Guide for Hajj & Umrah</title>
+  <title>Hajj Smart: Your Guide for Hajj & Umrah</title>
   <meta name="description" content="Step-by-step guidance for Umrah, Hajj al-Tamattu, Hajj al-Qiran and Hajj al-Ifrad. Track your rites, stay close to your companions and get location alerts at the Miqat and Makkah.">
   <meta name="theme-color" content="#F7F3E7">
   <link rel="icon" type="image/png" href="assets/img/favicon.png">
   <link rel="apple-touch-icon" href="assets/img/app-icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Noto+Kufi+Arabic:wght@400;600;700&family=Open+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Cinzel stands in for the app's Trajan wordmark font (Trajan is not licensed for web use here) -->
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Cormorant+Garamond:wght@500;600;700&family=Noto+Kufi+Arabic:wght@400;600;700&family=Open+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -19,9 +20,9 @@
   <!-- ===== Header ===== -->
   <header class="header" id="header">
     <nav class="nav container" aria-label="Primary">
-      <a href="#top" class="brand" aria-label="Hajj App home">
-        <img src="assets/img/app-icon.png" alt="" width="40" height="40" class="app-icon">
-        <span>Hajj<b>App</b></span>
+      <a href="#top" class="brand" aria-label="Hajj Smart home">
+        <img src="assets/img/hjlogo.svg" alt="" width="38" height="40">
+        <span class="brand__name" data-i18n="brand">Hajj Smart</span>
       </a>
 
       <ul class="nav__links" id="navLinks">
@@ -49,6 +50,7 @@
     <!-- ===== Hero ===== -->
     <section class="hero" id="top">
       <div class="hero__pattern" aria-hidden="true"></div>
+      <img src="assets/img/ornaments/middleFlower.svg" alt="" class="ornament ornament--hero" aria-hidden="true">
       <div class="container hero__grid">
         <div class="hero__copy">
           <p class="eyebrow reveal" data-i18n="hero.eyebrow">Your companion for the sacred journey</p>
@@ -78,24 +80,24 @@
           <div class="halo" aria-hidden="true"></div>
           <div class="phone">
             <div class="phone__notch"></div>
-            <img src="assets/img/splash_screen.png" alt="Hajj App splash screen showing the Kaaba at sunset" class="phone__screen" width="393" height="759">
+            <img src="assets/img/splash_screen.png" alt="Hajj Smart splash screen showing the Kaaba at sunset" class="phone__screen" width="393" height="759">
             <div class="phone__overlay">
-              <img src="assets/img/app-icon.png" alt="" width="44" height="44" class="app-icon">
-              <span>Hajj App</span>
+              <img src="assets/img/hjlogoLight.svg" alt="" width="46" height="48">
+              <span data-i18n="brand">Hajj Smart</span>
             </div>
           </div>
 
           <div class="float-card float-card--step">
-            <img src="assets/img/tawaf.png" alt="" width="40" height="40">
+            <img src="assets/img/pins/tawaf.png" alt="" width="40" height="40">
             <div>
-              <small data-i18n="card.step">Step 2 of 4 · Umrah</small>
+              <small data-i18n="card.step">Step 4 of 9 · Umrah</small>
               <strong data-i18n="card.tawaf">Tawaf around the Kaaba</strong>
-              <div class="progress"><span style="width:50%"></span></div>
+              <div class="progress"><span style="width:44%"></span></div>
             </div>
           </div>
 
           <div class="float-card float-card--alert">
-            <span class="pulse" aria-hidden="true"></span>
+            <img src="assets/img/pins/miquat.png" alt="" width="40" height="40">
             <div>
               <small data-i18n="card.alertTitle">Location alert</small>
               <strong data-i18n="card.alert">You have entered the Miqat boundary</strong>
@@ -103,7 +105,11 @@
           </div>
 
           <div class="float-card float-card--companions">
-            <div class="avatars" aria-hidden="true"><i>A</i><i>F</i><i>Y</i></div>
+            <div class="avatars" aria-hidden="true">
+              <img src="assets/img/people/muslim_man_1.svg" alt="">
+              <img src="assets/img/people/muslim_woman_1.svg" alt="">
+              <img src="assets/img/people/muslim_woman_2.svg" alt="">
+            </div>
             <div>
               <small data-i18n="card.companions">3 companions</small>
               <strong data-i18n="card.companionsNear">Nearby at Masjid al-Haram</strong>
@@ -113,84 +119,101 @@
       </div>
     </section>
 
-    <!-- ===== Features ===== -->
+    <!-- ===== Features (icons taken from the app) ===== -->
     <section class="section" id="features">
       <div class="container">
         <header class="section__head reveal">
           <p class="eyebrow" data-i18n="features.eyebrow">Everything in one place</p>
           <h2 class="section__title" data-i18n="features.title">Built for pilgrims, by people who care</h2>
-          <p class="section__lead" data-i18n="features.lead">Focus on your worship. Hajj App keeps track of the rites, the places and the people for you.</p>
+          <p class="section__lead" data-i18n="features.lead">Focus on your worship. Hajj Smart keeps track of the rites, the places and the people for you.</p>
         </header>
 
         <div class="features">
           <article class="feature reveal">
-            <div class="feature__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h10M4 18h7" /><path d="m15 17 2 2 4-4" /></svg></div>
+            <div class="feature__icon"><img src="assets/img/icons/calender.svg" alt=""></div>
             <h3>Step-by-step rites</h3>
             <p>Every rite is broken into clear sub-tasks with a guide. Tick them off as you go and always know what comes next.</p>
           </article>
           <article class="feature reveal">
-            <div class="feature__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3.2"/><circle cx="17" cy="9" r="2.4"/><path d="M3 19c.6-3.2 3-5 6-5s5.4 1.8 6 5"/><path d="M15.5 14.3c2.6-.4 4.8 1.1 5.5 4.2"/></svg></div>
+            <div class="feature__icon"><img src="assets/img/icons/companion.svg" alt=""></div>
             <h3>Stay with your companions</h3>
             <p>Connect with family and friends, see which step each of them is on and find them on the map when crowds separate you.</p>
           </article>
           <article class="feature reveal">
-            <div class="feature__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg></div>
+            <div class="feature__icon"><img src="assets/img/icons/alert.svg" alt=""></div>
             <h3>Miqat &amp; Makkah alerts</h3>
             <p>Get a notification when you cross the Miqat boundary or enter Makkah, so you never miss the moment to enter Ihram.</p>
           </article>
           <article class="feature reveal">
-            <div class="feature__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5a10 10 0 0 1 14 0"/><path d="M8.5 15.8a5 5 0 0 1 7 0"/><circle cx="12" cy="19" r="1"/><path d="M3 3l18 18"/></svg></div>
+            <div class="feature__icon"><img src="assets/img/icons/offline_icon.png" alt=""></div>
             <h3>Works when the network doesn't</h3>
             <p>Your progress is saved on your device, so the guide keeps working in crowded areas with weak signal.</p>
           </article>
           <article class="feature reveal">
-            <div class="feature__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h9M8.5 3v2M6 5c.5 3.5 3 6 6 7"/><path d="M11 5c-.5 3.5-3 6-6 7"/><path d="m13 21 4-10 4 10M14.5 17.5h5"/></svg></div>
+            <div class="feature__icon"><img src="assets/img/icons/language.svg" alt=""></div>
             <h3>English &amp; Arabic</h3>
             <p>Use the whole app in English or Arabic, with full right-to-left support. Switch any time in settings.</p>
           </article>
           <article class="feature reveal">
-            <div class="feature__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="10" width="14" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg></div>
-            <h3>Quick, secure sign-in</h3>
-            <p>Sign in with a phone verification code, email link, Google or Apple. No passwords to remember on the journey.</p>
+            <div class="feature__icon"><img src="assets/img/icons/invite_friend.svg" alt=""></div>
+            <h3>Invite family &amp; friends</h3>
+            <p>Share your profile or invite people from your contacts, so everyone in your group is on the same journey.</p>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- ===== Journeys ===== -->
+    <!-- ===== Journeys (banners + rite photos from the app) ===== -->
     <section class="section section--sand" id="journeys">
+      <img src="assets/img/ornaments/bottomFlower.svg" alt="" class="ornament ornament--corner" aria-hidden="true">
       <div class="container">
         <header class="section__head reveal">
           <p class="eyebrow">Choose your journey</p>
           <h2 class="section__title">Four journeys, each with its own guide</h2>
-          <p class="section__lead">Pick the type of pilgrimage you are performing to see the rites in order.</p>
+          <p class="section__lead">Pick the type of pilgrimage you are performing, then tap any rite to see it.</p>
         </header>
 
         <div class="journeys reveal" role="tablist" aria-label="Journey types">
           <button class="journey is-active" role="tab" aria-selected="true" data-journey="umrah">
-            <img src="assets/img/umrah.png" alt="" loading="lazy">
+            <img src="assets/img/journeys/umrah.jpg" alt="" loading="lazy">
             <span class="journey__label">Umrah</span>
           </button>
           <button class="journey" role="tab" aria-selected="false" data-journey="tamattu">
-            <img src="assets/img/HajjAlTamattu.png" alt="" loading="lazy">
+            <img src="assets/img/journeys/tamattu.jpg" alt="" loading="lazy">
             <span class="journey__label">Hajj al-Tamattu</span>
           </button>
           <button class="journey" role="tab" aria-selected="false" data-journey="qiran">
-            <img src="assets/img/hajjAlQuran.png" alt="" loading="lazy">
+            <img src="assets/img/journeys/qiran.jpg" alt="" loading="lazy">
             <span class="journey__label">Hajj al-Qiran</span>
           </button>
           <button class="journey" role="tab" aria-selected="false" data-journey="ifrad">
-            <img src="assets/img/hajjAlIfrad.png" alt="" loading="lazy">
+            <img src="assets/img/journeys/ifrad.jpg" alt="" loading="lazy">
             <span class="journey__label">Hajj al-Ifrad</span>
           </button>
         </div>
 
-        <div class="timeline-wrap reveal" role="tabpanel" aria-live="polite">
+        <div class="timeline-wrap reveal" role="tabpanel">
           <div class="timeline__meta">
             <h3 id="journeyTitle">Umrah</h3>
             <p id="journeyDesc"></p>
           </div>
           <ol class="timeline" id="timeline"><!-- filled by main.js --></ol>
+
+          <!-- Selected rite, styled like the app's guide card -->
+          <article class="rite-card" id="riteCard" aria-live="polite">
+            <div class="rite-card__media">
+              <img id="ritePhoto" src="assets/img/rites/ihram.jpg" alt="">
+            </div>
+            <div class="rite-card__body">
+              <span class="rite-card__step" id="riteStep">Step 1 of 9</span>
+              <h4 class="rite-card__title"><img id="riteIcon" src="assets/img/pins/ihram.png" alt="" width="44" height="44"><span id="riteName">Enter Ihram at the Miqat</span></h4>
+              <p id="riteDesc"></p>
+              <div class="rite-card__nav">
+                <button type="button" class="btn btn--ghost" id="ritePrev" aria-label="Previous rite">&larr; Previous</button>
+                <button type="button" class="btn btn--dark" id="riteNext" aria-label="Next rite">Next &rarr;</button>
+              </div>
+            </div>
+          </article>
           <p class="timeline__note">An overview only. Follow the in-app guide and the advice of your scholars and group leaders.</p>
         </div>
       </div>
@@ -206,21 +229,21 @@
           </header>
           <ol class="how__steps">
             <li class="reveal">
-              <span class="how__num">1</span>
+              <span class="how__icon"><img src="assets/img/icons/profile_page.svg" alt=""><b>1</b></span>
               <div>
                 <h3>Create your profile</h3>
-                <p>Sign in with your phone or email and add your basic details in under a minute.</p>
+                <p>Sign in with a phone code, email link, Google or Apple and add your details in under a minute.</p>
               </div>
             </li>
             <li class="reveal">
-              <span class="how__num">2</span>
+              <span class="how__icon"><img src="assets/img/icons/add_from_Contacts_Icon.svg" alt=""><b>2</b></span>
               <div>
                 <h3>Add your companions</h3>
                 <p>Find people by username, add them from your contacts or send an invite link.</p>
               </div>
             </li>
             <li class="reveal">
-              <span class="how__num">3</span>
+              <span class="how__icon"><img src="assets/img/pins/mecca.png" alt=""><b>3</b></span>
               <div>
                 <h3>Start your journey</h3>
                 <p>Choose Umrah or your type of Hajj and follow each rite, one step at a time.</p>
@@ -231,18 +254,20 @@
 
         <div class="how__visual reveal" aria-hidden="true">
           <div class="mini-app">
-            <div class="mini-app__bar">
-              <span>Umrah Journey</span><b>50%</b>
+            <div class="mini-app__banner">
+              <img src="assets/img/journeys/umrah.jpg" alt="">
+              <span>Umrah Journey</span><b>67%</b>
             </div>
             <ul class="mini-app__list">
-              <li class="done"><img src="assets/img/ihram.png" alt=""><span>Ihram at the Miqat</span><i></i></li>
-              <li class="done"><img src="assets/img/tawaf.png" alt=""><span>Tawaf</span><i></i></li>
-              <li class="current"><img src="assets/img/sai.png" alt=""><span>Sa'i between Safa &amp; Marwah</span><i></i></li>
-              <li><img src="assets/img/halq.png" alt=""><span>Halq or Taqsir</span><i></i></li>
+              <li class="done"><img src="assets/img/pins/masjid_al_haram.png" alt=""><span>Enter Masjid al-Haram</span><i></i></li>
+              <li class="done"><img src="assets/img/pins/tawaf.png" alt=""><span>Tawaf</span><i></i></li>
+              <li class="done"><img src="assets/img/pins/macaqam_Ibrahim.png" alt=""><span>Pray at Maqam Ibrahim</span><i></i></li>
+              <li class="current"><img src="assets/img/pins/sai.png" alt=""><span>Sa'i between Safa &amp; Marwah</span><i></i></li>
+              <li><img src="assets/img/pins/halq.png" alt=""><span>Halq or Taqsir</span><i></i></li>
             </ul>
             <div class="mini-app__companion">
-              <div class="avatars"><i>F</i></div>
-              <p><b>Fatima</b> is on Step 3: Sa'i</p>
+              <div class="avatars"><img src="assets/img/people/muslim_woman_1.svg" alt=""></div>
+              <p><b>Fatima</b> is on Step 7: Sa'i</p>
             </div>
           </div>
         </div>
@@ -251,6 +276,7 @@
 
     <!-- ===== FAQ ===== -->
     <section class="section section--sand" id="faq">
+      <img src="assets/img/ornaments/middleFlower.svg" alt="" class="ornament ornament--faq" aria-hidden="true">
       <div class="container container--narrow">
         <header class="section__head reveal">
           <p class="eyebrow">Questions</p>
@@ -259,7 +285,7 @@
 
         <div class="faq">
           <details class="faq__item reveal">
-            <summary>Is Hajj App free to use?</summary>
+            <summary>Is Hajj Smart free to use?</summary>
             <p>Yes. You can download the app, create a profile, follow every journey guide and connect with companions at no cost.</p>
           </details>
           <details class="faq__item reveal">
@@ -284,10 +310,12 @@
 
     <!-- ===== CTA ===== -->
     <section class="cta" id="download">
+      <img src="assets/img/ornaments/middleFlower.svg" alt="" class="ornament ornament--cta-l" aria-hidden="true">
+      <img src="assets/img/ornaments/middleFlower.svg" alt="" class="ornament ornament--cta-r" aria-hidden="true">
       <div class="container cta__inner reveal">
-        <img src="assets/img/app-icon.png" alt="" width="72" height="72" class="app-icon cta__logo">
+        <img src="assets/img/app-icon.png" alt="" width="80" height="80" class="app-icon cta__logo">
         <h2 data-i18n="cta.title">Begin your journey with confidence</h2>
-        <p data-i18n="cta.lead">Download Hajj App and keep your rites, your places and your people in one place.</p>
+        <p data-i18n="cta.lead">Download Hajj Smart and keep your rites, your places and your people in one place.</p>
         <div class="hero__ctas hero__ctas--center">
           <a href="#" class="store-btn store-btn--light" aria-label="Download on the App Store">
             <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M16.37 12.6c-.02-2.3 1.88-3.4 1.96-3.46-1.07-1.56-2.73-1.78-3.32-1.8-1.41-.14-2.76.83-3.47.83-.72 0-1.82-.81-2.99-.79-1.54.02-2.96.9-3.75 2.27-1.6 2.78-.41 6.89 1.15 9.14.76 1.1 1.67 2.34 2.86 2.3 1.15-.05 1.58-.74 2.97-.74 1.38 0 1.78.74 2.99.72 1.24-.02 2.02-1.12 2.77-2.23.88-1.28 1.24-2.52 1.26-2.59-.03-.01-2.41-.92-2.43-3.65zM14.1 5.86c.63-.77 1.06-1.83.94-2.89-.91.04-2.02.61-2.67 1.37-.58.67-1.1 1.76-.96 2.8 1.02.08 2.05-.52 2.69-1.28z"/></svg>
@@ -307,8 +335,8 @@
     <div class="container footer__grid">
       <div class="footer__brand">
         <a href="#top" class="brand brand--light">
-          <img src="assets/img/app-icon.png" alt="" width="36" height="36" class="app-icon">
-          <span>Hajj<b>App</b></span>
+          <img src="assets/img/hjlogoLight.svg" alt="" width="34" height="36">
+          <span class="brand__name" data-i18n="brand">Hajj Smart</span>
         </a>
         <p>Guidance, companionship and peace of mind for every pilgrim.</p>
       </div>
@@ -331,7 +359,7 @@
       </nav>
     </div>
     <div class="container footer__bottom">
-      <p>&copy; <span id="year"></span> Hajj App. All rights reserved.</p>
+      <p>&copy; <span id="year"></span> Hajj Smart. All rights reserved.</p>
       <p lang="ar" dir="rtl" class="footer__ar">حج مبرور وسعي مشكور</p>
     </div>
   </footer>

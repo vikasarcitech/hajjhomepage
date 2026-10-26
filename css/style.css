@@ -18,6 +18,7 @@
 
   --font-body: "Open Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
   --font-display: "Cormorant Garamond", Georgia, serif;
+  --font-brand: "Cinzel", "Trajan Pro", Georgia, serif;
   --font-ar: "Noto Kufi Arabic", "Open Sans", sans-serif;
 
   --radius: 20px;
@@ -48,7 +49,18 @@ a { color: inherit; text-decoration: none; }
 button { font: inherit; color: inherit; cursor: pointer; border: 0; background: none; }
 h1, h2, h3, h4 { margin: 0; line-height: 1.15; }
 /* Cormorant defaults to old-style figures; keep numbers aligned */
-.brand, .hero__trust b, .how__num, .timeline__meta h3 { font-variant-numeric: lining-nums; }
+.hero__trust b, .timeline__meta h3 { font-variant-numeric: lining-nums; }
+
+/* Floral ornaments from the app (middleFlower / bottomFlower). They ship at ~10–15% gold opacity. */
+.ornament { position: absolute; pointer-events: none; user-select: none; z-index: 0; }
+.ornament--hero { inset-inline-start: 0; top: 18%; height: 70%; max-height: 640px; opacity: .9; }
+.ornament--corner { inset-inline-end: -40px; bottom: -40px; width: 340px; opacity: .9; }
+.ornament--faq { inset-inline-end: 0; top: 10%; height: 80%; transform: scaleX(-1); }
+.ornament--cta-l, .ornament--cta-r { top: 0; height: 100%; opacity: .55; }
+.ornament--cta-l { left: 0; }
+.ornament--cta-r { right: 0; transform: scaleX(-1); }
+[dir="rtl"] .ornament--faq { transform: none; }
+[dir="rtl"] .ornament--hero { transform: scaleX(-1); }
 p { margin: 0; }
 ul, ol { margin: 0; padding: 0; list-style: none; }
 
@@ -82,6 +94,9 @@ html[lang="ar"] .eyebrow { letter-spacing: 0; }
 .btn--dark { background: var(--ink); color: var(--cream); box-shadow: var(--shadow-sm); }
 .btn--dark:hover { box-shadow: 0 10px 24px -10px rgba(22, 23, 25, .6); }
 .btn--gold { background: var(--gold); color: var(--ink); }
+.btn--ghost { background: transparent; color: var(--ink); box-shadow: inset 0 0 0 1.5px var(--gold); }
+.btn--ghost:hover { background: var(--gold-soft); }
+.btn:disabled { opacity: .35; cursor: not-allowed; transform: none; }
 
 .store-btn {
   display: inline-flex; align-items: center; gap: .75rem;
@@ -108,16 +123,18 @@ html[lang="ar"] .eyebrow { letter-spacing: 0; }
 }
 .nav { height: 100%; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
 
-.brand { display: inline-flex; align-items: center; gap: .6rem; font-family: var(--font-display); font-size: 1.6rem; font-weight: 700; letter-spacing: .01em; }
-.brand b { color: var(--gold-deep); font-weight: 700; margin-inline-start: .15rem; }
+/* Wordmark mirrors the app's logoWithText widget (Trajan → Cinzel on web) */
+.brand { display: inline-flex; align-items: center; gap: .65rem; }
+.brand img { height: 40px; width: auto; }
+.brand__name { font-family: var(--font-brand); font-size: 1.3rem; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; }
+html[lang="ar"] .brand__name { font-family: var(--font-ar); letter-spacing: 0; font-weight: 700; }
 
 /* App icon (from the iOS/Android launcher icon) has a white background, so show it as a rounded tile */
 .app-icon {
   flex: none; border-radius: 22%; background: var(--white);
   box-shadow: 0 0 0 1px rgba(207, 180, 125, .35), 0 4px 12px -4px rgba(22, 23, 25, .25);
 }
-.brand--light { color: var(--cream); }
-.brand--light b { color: var(--gold); }
+.brand--light { color: var(--gold); }
 
 .nav__links { display: flex; align-items: center; gap: 2rem; }
 .nav__links a:not(.btn) { position: relative; font-weight: 600; font-size: .95rem; color: var(--ink-80); transition: color .2s; }
@@ -209,8 +226,9 @@ html[lang="ar"] .hero__title em { font-style: normal; }
   position: absolute; inset: auto 10px 10px; padding: 2.5rem 1rem 1.6rem; border-radius: 0 0 34px 34px;
   display: flex; flex-direction: column; align-items: center; gap: .4rem;
   background: linear-gradient(to top, rgba(13, 13, 15, .85), transparent);
-  color: var(--cream); font-family: var(--font-display); font-size: 1.4rem; font-weight: 700;
+  color: var(--gold); font-family: var(--font-brand); font-size: 1.05rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase;
 }
+html[lang="ar"] .phone__overlay { font-family: var(--font-ar); letter-spacing: 0; }
 
 .float-card {
   position: absolute; display: flex; align-items: center; gap: .75rem;
@@ -230,21 +248,17 @@ html[lang="ar"] .float-card small { letter-spacing: 0; text-transform: none; }
 .progress { height: 5px; margin-top: .45rem; border-radius: 5px; background: var(--sand); overflow: hidden; }
 .progress span { display: block; height: 100%; background: linear-gradient(90deg, var(--gold), var(--gold-deep)); border-radius: inherit; }
 
-.pulse { position: relative; flex: none; width: 12px; height: 12px; border-radius: 50%; background: var(--teal); margin-inline: .3rem; }
-.pulse::after { content: ""; position: absolute; inset: 0; border-radius: 50%; background: var(--teal); animation: ping 1.8s ease-out infinite; }
-
+/* Companion avatars use the app's illustrated people */
 .avatars { display: flex; flex: none; }
-.avatars i {
-  width: 32px; height: 32px; display: grid; place-items: center; border-radius: 50%;
-  font-style: normal; font-weight: 700; font-size: .8rem; color: var(--ink);
+.avatars img {
+  width: 34px; height: 34px; border-radius: 50%; object-fit: cover; object-position: top;
   background: var(--sand); border: 2px solid var(--white);
 }
-.avatars i + i { margin-inline-start: -10px; }
-.avatars i:nth-child(2) { background: var(--gold); }
-.avatars i:nth-child(3) { background: #DCCB9E; }
+.avatars img + img { margin-inline-start: -10px; }
 
 /* ---------- Sections ---------- */
-.section { padding: clamp(4.5rem, 9vw, 7.5rem) 0; }
+.section { position: relative; overflow: hidden; padding: clamp(4.5rem, 9vw, 7.5rem) 0; }
+.section > .container, .hero__grid, .cta__inner { position: relative; z-index: 1; }
 .section--sand { background: linear-gradient(180deg, var(--sand), #F1E9D2); }
 .section__head { max-width: 680px; margin: 0 auto 3.5rem; text-align: center; }
 .section__head--left { margin-inline: 0; text-align: start; }
@@ -262,18 +276,18 @@ html[lang="ar"] .float-card small { letter-spacing: 0; text-transform: none; }
 .feature:hover { transform: translateY(-6px); box-shadow: var(--shadow); border-color: var(--gold); }
 .feature__icon {
   width: 56px; height: 56px; display: grid; place-items: center; margin-bottom: 1.25rem;
-  border-radius: 16px; background: var(--gold-soft); color: var(--gold-deep);
-  transition: background .35s, color .35s;
+  border-radius: 16px; background: var(--cream); box-shadow: inset 0 0 0 1px rgba(207, 180, 125, .35);
+  transition: transform .35s var(--ease), box-shadow .35s;
 }
-.feature:hover .feature__icon { background: var(--ink); color: var(--gold); }
-.feature__icon svg { width: 28px; height: 28px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+.feature:hover .feature__icon { transform: rotate(-6deg) scale(1.08); box-shadow: inset 0 0 0 1.5px var(--gold); }
+.feature__icon img { width: 34px; height: 34px; object-fit: contain; }
 .feature h3 { font-size: 1.15rem; font-weight: 700; margin-bottom: .5rem; }
 .feature p { color: var(--ink-60); font-size: .96rem; }
 
 /* Journeys */
 .journeys { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-bottom: 2rem; }
 .journey {
-  position: relative; overflow: hidden; border-radius: var(--radius-sm); aspect-ratio: 352 / 146;
+  position: relative; overflow: hidden; border-radius: var(--radius-sm); aspect-ratio: 16 / 9;
   box-shadow: var(--shadow-sm); outline: 3px solid transparent; outline-offset: 3px;
   transition: transform .3s var(--ease), box-shadow .3s, outline-color .3s;
 }
@@ -310,23 +324,47 @@ html[lang="ar"] .float-card small { letter-spacing: 0; text-transform: none; }
   content: ""; position: absolute; top: 34px; inset-inline-start: calc(50% + 40px); width: calc(100% - 80px + 1rem);
   border-top: 2px dashed var(--gold);
 }
+.timeline__btn { width: 100%; padding: 0; text-align: center; border-radius: 14px; }
 .timeline__icon {
   width: 68px; height: 68px; margin: 0 auto .75rem; display: grid; place-items: center;
   border-radius: 50%; background: var(--white); box-shadow: var(--shadow-sm); border: 2px solid var(--sand);
+  transition: transform .3s var(--ease), border-color .3s, box-shadow .3s;
 }
 .timeline__icon img { width: 44px; height: 44px; }
+.timeline__btn:hover .timeline__icon { transform: translateY(-3px); border-color: var(--gold); }
+.timeline__btn[aria-current="step"] .timeline__icon { border-color: var(--gold-deep); box-shadow: 0 0 0 5px var(--gold-soft), var(--shadow-sm); transform: scale(1.06); }
 .timeline__num { display: block; font-size: .72rem; font-weight: 700; color: var(--gold-deep); letter-spacing: .08em; }
 .timeline__name { display: block; font-weight: 700; font-size: .92rem; line-height: 1.3; }
-.timeline__note { margin-top: .5rem; font-size: .82rem; color: var(--ink-60); font-style: italic; }
+.timeline__note { margin-top: 1rem; font-size: .82rem; color: var(--ink-60); font-style: italic; }
+
+/* Rite detail card: photo + icon + description, like the app's trip guide card */
+.rite-card {
+  display: grid; grid-template-columns: 1.1fr 1fr; overflow: hidden; margin-top: 1.25rem;
+  border-radius: var(--radius); background: var(--white); box-shadow: var(--shadow); border: 1px solid rgba(207, 180, 125, .35);
+}
+.rite-card__media { position: relative; min-height: 280px; background: var(--sand); }
+.rite-card__media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: opacity .35s var(--ease); }
+.rite-card__media img.is-loading { opacity: 0; }
+.rite-card__body { display: flex; flex-direction: column; gap: .8rem; padding: clamp(1.5rem, 3vw, 2.25rem); }
+.rite-card__step { font-size: .75rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--gold-deep); }
+html[lang="ar"] .rite-card__step { letter-spacing: 0; }
+.rite-card__title { display: flex; align-items: center; gap: .75rem; font-family: var(--font-display); font-size: clamp(1.6rem, 2.6vw, 2.1rem); font-weight: 700; }
+.rite-card__title img { flex: none; }
+.rite-card__body p { color: var(--ink-60); }
+.rite-card__nav { display: flex; gap: .6rem; margin-top: auto; padding-top: .5rem; }
 
 /* How it works */
 .how { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
 .how__steps { display: grid; gap: 1.5rem; }
 .how__steps li { display: flex; gap: 1.25rem; align-items: flex-start; }
-.how__num {
-  flex: none; width: 52px; height: 52px; display: grid; place-items: center; border-radius: 50%;
-  font-family: var(--font-display); font-size: 1.6rem; font-weight: 700;
-  background: var(--ink); color: var(--gold);
+.how__icon {
+  position: relative; flex: none; width: 60px; height: 60px; display: grid; place-items: center; border-radius: 18px;
+  background: var(--white); box-shadow: var(--shadow-sm), inset 0 0 0 1px rgba(207, 180, 125, .4);
+}
+.how__icon img { width: 36px; height: 36px; object-fit: contain; }
+.how__icon b {
+  position: absolute; top: -8px; inset-inline-end: -8px; width: 24px; height: 24px; display: grid; place-items: center;
+  border-radius: 50%; background: var(--ink); color: var(--gold); font-size: .75rem; font-weight: 800;
 }
 .how__steps h3 { font-size: 1.15rem; margin-bottom: .3rem; }
 .how__steps p { color: var(--ink-60); }
@@ -336,11 +374,16 @@ html[lang="ar"] .float-card small { letter-spacing: 0; text-transform: none; }
   width: min(380px, 100%); padding: 1.5rem; border-radius: 28px;
   background: var(--white); box-shadow: var(--shadow-lg); border: 1px solid rgba(207, 180, 125, .3);
 }
-.mini-app__bar {
-  display: flex; justify-content: space-between; align-items: center; padding: 1rem 1.2rem; margin-bottom: 1rem;
-  border-radius: 16px; background: var(--ink); color: var(--cream); font-weight: 800; font-size: 1rem;
+/* Journey banner, as on the app's home screen */
+.mini-app__banner {
+  position: relative; overflow: hidden; display: flex; justify-content: space-between; align-items: flex-end;
+  height: 110px; padding: 1rem 1.2rem; margin-bottom: 1rem; border-radius: 16px;
+  color: var(--cream); font-weight: 800; font-size: 1.05rem; text-transform: uppercase; letter-spacing: .02em;
 }
-.mini-app__bar b { color: var(--gold); }
+.mini-app__banner img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; }
+.mini-app__banner::before { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(to top, rgba(22, 23, 25, .8), rgba(22, 23, 25, .15)); }
+.mini-app__banner { isolation: isolate; }
+.mini-app__banner b { color: var(--gold); }
 .mini-app__list { display: grid; gap: .6rem; }
 .mini-app__list li {
   display: flex; align-items: center; gap: .8rem; padding: .7rem .9rem; border-radius: 14px;
@@ -379,7 +422,7 @@ html[lang="ar"] .float-card small { letter-spacing: 0; text-transform: none; }
   color: var(--cream);
 }
 .cta::before {
-  content: ""; position: absolute; inset: 0; opacity: .12; pointer-events: none;
+  content: ""; position: absolute; inset: 0; opacity: .08; pointer-events: none;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Cg fill='none' stroke='%23CFB47D' stroke-width='.8'%3E%3Crect x='24' y='24' width='32' height='32'/%3E%3Crect x='24' y='24' width='32' height='32' transform='rotate(45 40 40)'/%3E%3C/g%3E%3C/svg%3E");
 }
 .cta__inner { position: relative; max-width: 640px; }
@@ -456,13 +499,19 @@ html[lang="ar"] .float-card small { letter-spacing: 0; text-transform: none; }
 
   .journeys { grid-template-columns: repeat(2, 1fr); }
   .how { grid-template-columns: 1fr; gap: 3rem; }
+  .rite-card { grid-template-columns: 1fr; }
+  .rite-card__media { min-height: 240px; }
+  .ornament--corner { width: 220px; }
   .footer__grid { grid-template-columns: 1fr 1fr; }
   .footer__brand { grid-column: 1 / -1; }
 }
 
 @media (max-width: 600px) {
-  .brand { font-size: 1.4rem; }
-  .brand img { width: 34px; height: 34px; }
+  .brand img { height: 34px; }
+  .brand__name { font-size: 1.05rem; }
+  .rite-card__media { min-height: 200px; }
+  .rite-card__nav .btn { flex: 1; }
+  .ornament--hero, .ornament--faq { opacity: .6; }
   .features { grid-template-columns: 1fr; }
   .hero__visual { min-height: 480px; }
   .phone { width: 230px; }
