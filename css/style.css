@@ -110,6 +110,12 @@ html[lang="ar"] .eyebrow { letter-spacing: 0; }
 
 .brand { display: inline-flex; align-items: center; gap: .6rem; font-family: var(--font-display); font-size: 1.6rem; font-weight: 700; letter-spacing: .01em; }
 .brand b { color: var(--gold-deep); font-weight: 700; margin-inline-start: .15rem; }
+
+/* App icon (from the iOS/Android launcher icon) has a white background, so show it as a rounded tile */
+.app-icon {
+  flex: none; border-radius: 22%; background: var(--white);
+  box-shadow: 0 0 0 1px rgba(207, 180, 125, .35), 0 4px 12px -4px rgba(22, 23, 25, .25);
+}
 .brand--light { color: var(--cream); }
 .brand--light b { color: var(--gold); }
 
@@ -205,7 +211,6 @@ html[lang="ar"] .hero__title em { font-style: normal; }
   background: linear-gradient(to top, rgba(13, 13, 15, .85), transparent);
   color: var(--cream); font-family: var(--font-display); font-size: 1.4rem; font-weight: 700;
 }
-.phone__overlay img { filter: brightness(1.1); }
 
 .float-card {
   position: absolute; display: flex; align-items: center; gap: .75rem;
@@ -378,7 +383,7 @@ html[lang="ar"] .float-card small { letter-spacing: 0; text-transform: none; }
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Cg fill='none' stroke='%23CFB47D' stroke-width='.8'%3E%3Crect x='24' y='24' width='32' height='32'/%3E%3Crect x='24' y='24' width='32' height='32' transform='rotate(45 40 40)'/%3E%3C/g%3E%3C/svg%3E");
 }
 .cta__inner { position: relative; max-width: 640px; }
-.cta__logo { margin: 0 auto 1.25rem; filter: drop-shadow(0 6px 20px rgba(207, 180, 125, .5)); }
+.cta__logo { margin: 0 auto 1.5rem; box-shadow: 0 0 0 1px rgba(207, 180, 125, .5), 0 10px 40px -6px rgba(207, 180, 125, .55); }
 .cta h2 { font-family: var(--font-display); font-size: clamp(2.2rem, 4.4vw, 3.3rem); font-weight: 700; margin-bottom: 1rem; }
 .cta p { color: rgba(247, 243, 231, .75); font-size: 1.08rem; }
 
